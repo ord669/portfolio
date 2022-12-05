@@ -1,8 +1,8 @@
-(function($) {
+(function ($) {
   "use strict"; // Start of use strict
 
   // Smooth scrolling using jQuery easing
-  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
@@ -16,7 +16,7 @@
   });
 
   // Closes responsive menu when a scroll trigger link is clicked
-  $('.js-scroll-trigger').click(function() {
+  $('.js-scroll-trigger').click(function () {
     $('.navbar-collapse').collapse('hide');
   });
 
@@ -27,7 +27,7 @@
   });
 
   // Collapse the navbar when page is scrolled
-  $(window).scroll(function() {
+  $(window).scroll(function () {
     if ($("#mainNav").offset().top > 100) {
       $("#mainNav").addClass("navbar-shrink");
     } else {
@@ -40,10 +40,10 @@
 
 
 renderPortfolio()
-function renderPortfolio(){
-  const portfolio =  getgPortfolio()
+function renderPortfolio() {
+  const portfolio = getgPortfolio()
   console.log('portfolio:', portfolio)
-  const strHTMLs = portfolio.map( proj =>   `
+  const strHTMLs = portfolio.map(proj => `
   <div class="col-md-4 col-sm-6 portfolio-item">
     <a class="portfolio-link" data-toggle="modal" href="#${proj.id}">
       <div class="portfolio-hover">
@@ -66,9 +66,9 @@ function renderPortfolio(){
 
 
 renderModal()
-function renderModal(){
-  const portfolio =  getgPortfolio()
-  const strHTMLs = portfolio.map( proj =>   ` 
+function renderModal() {
+  const portfolio = getgPortfolio()
+  const strHTMLs = portfolio.map(proj => ` 
   <div class="portfolio-modal modal fade" id="${proj.id}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -110,17 +110,18 @@ function renderModal(){
 
 
 const $elForm = $('.submit-btn')
-$elForm.on('click',sendEmail)
+$elForm.on('click', sendEmail)
 
-function sendEmail(ev){
+function sendEmail(ev) {
   ev.preventDefault()
-  const email = $('#form-email').val()
-  const subject = $('#form-subject').val()
-  const body = $('#form-body').val()
+  var email = $('#form-email').val()
+  var subject = $('#form-subject').val()
+  var body = $('#form-body').val()
   window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`, `_blank`);
-  
-  email.text('')
-  subject.text('')
-  body.text('')
+  console.log('wotk')
+  $('#form-email').val('')
+  $('#form-subject').val('')
+  $('#form-body').val('')
+  // openCanvas()
   console.log('works:', 'works')
 }
